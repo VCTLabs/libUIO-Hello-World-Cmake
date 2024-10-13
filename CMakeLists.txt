@@ -5,9 +5,10 @@ project (
     VERSION 0.1
 )
 
-find_package(PkgConfig)
-pkg_check_modules(UIO IMPORTED_TARGET libuio)
+find_package(PkgConfig REQUIRED)
+pkg_check_modules(UIO REQUIRED IMPORTED_TARGET libuio)
 
 add_executable(${PROJECT_NAME} hello.c)
-target_link_libraries(${PROJECT_NAME} PUBLIC PkgConfig::UIO ${CMAKE_THREAD_LIBS_INIT})
+target_link_libraries(${PROJECT_NAME} PUBLIC PkgConfig::UIO)
+
 install(TARGETS ${PROJECT_NAME} RUNTIME DESTINATION bin)
